@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,7 +15,7 @@ public class Player : MonoBehaviour
         float halfWidth = cam.aspect * halfHeight;
 
         // Offset the screen so players don't touch the screen (leaves a margin)
-        halfWidth -= 0.5f;
+        halfWidth -= 0.7f;
         _screenWidthMin = -halfWidth;
         _screenWidthMax = halfWidth;
     }
@@ -48,7 +46,7 @@ public class Player : MonoBehaviour
                 touchPosition.y = -3f;
                 transform.position = Vector3.Lerp(transform.position, touchPosition, 0.15f);
 
-                
+                // keep player within screen boundaries
                 if (transform.position.x > _screenWidthMax)
                 {
                     transform.position = new Vector2(_screenWidthMax, transform.position.y);
